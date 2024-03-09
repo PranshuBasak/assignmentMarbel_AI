@@ -59,53 +59,10 @@ export const Dashboard: React.FC = () => {
   };
 
   const memoizedRevenueData = useMemoizedChartData(dailyRevenue);
-  const memoizedOrdersData = useMemoizedChartData(dailyOrders);
-  const memoizedNewCustomersData = useMemoizedChartData(newCustomers);
+  // const memoizedOrdersData = useMemoizedChartData(dailyOrders);
+  // const memoizedNewCustomersData = useMemoizedChartData(newCustomers);
 
-  const tabs: TTab[] = [
-    {
-      id: 1,
-      label: "Daily Revenue",
-      content: (
-         <ResponsiveAreaChart
-          kpi="Daily revenue"
-          data={memoizedRevenueData}
-          colors={{
-            stroke: "rgb(54, 162, 235)",
-            fill: "rgba(54, 162, 235, 0.2)",
-          }}
-        />
-      ),
-    },
-    {
-      id: 2,
-      label: "Daily Orders",
-      content: (
-        <ResponsiveBarChart
-          kpi="Daily orders"
-          data={memoizedOrdersData}
-          colors={{
-            stroke: "rgb(255, 159, 64)",
-            fill: "rgba(255, 159, 64, 0.7)",
-          }}
-        />
-      ),
-    },
-    {
-      id: 3,
-      label: "New Customers",
-      content: (
-        <ResponsiveAreaChart
-          kpi="New customers"
-          data={memoizedNewCustomersData}
-          colors={{
-            stroke: "rgb(76, 175, 80)",
-            fill: "rgba(54, 162, 235, 0.2)",
-          }}
-        />
-      ),
-    },
-  ];
+
 
 
   return (
@@ -130,7 +87,6 @@ export const Dashboard: React.FC = () => {
           }}
       /> : null}
       </>}
-      {/* <TabView tabs={tabs} /> */}
     </div>
   );
 };

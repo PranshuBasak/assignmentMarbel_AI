@@ -18,7 +18,7 @@ export const CustomToolTip = ({
 
     return (
       <div
-        className="px-4 py-1   flex justify-center items-center gap-3  bg-white shadow-xl rounded-xl"
+        className="px-4 py-4   flex justify-center items-center gap-3  bg-white shadow-xl rounded-xl"
         style={tooltipStyle}
       >
         <p className=" bg-gradient-to-r from-blue-400 to-blue-300 w-6 h-1 rounded"></p>
