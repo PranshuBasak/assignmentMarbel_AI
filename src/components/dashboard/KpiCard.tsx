@@ -1,7 +1,7 @@
 import React from "react";
 
 type TKpiCardProps = {
-  title: string;
+  title: string ;
   data: any;
   icon: JSX.Element;
   colors: {
@@ -23,6 +23,8 @@ export const KpiCard = ({
   const calc = Math.round((trend / total) * 100);
   const percent = total > trend ? `+ ${calc}%` : `- ${calc}%`;
   const textColor = total > trend ? "seagreen" : "crimson";
+
+  
 
   return (
     <div

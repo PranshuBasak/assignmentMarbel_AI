@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   ResponsiveContainer,
   AreaChart,
@@ -25,6 +25,8 @@ export const ResponsiveAreaChart = ({
   data,
   colors,
 }: TResponsiveAreaChartProps) => {
+
+  
   return (
     <ResponsiveContainer height={400}>
       <AreaChart
@@ -63,6 +65,17 @@ export const ResponsiveAreaChart = ({
             backgroundColor: "rgba(0, 0, 0, 0.7)",
             border: "0 solid #000",
             borderRadius: "10px",
+          }}
+        />
+        <Area
+          type="monotone"
+          dataKey="value"
+          stroke={colors?.stroke}
+          strokeWidth={3}
+          fill="rgba(54, 162, 235, 1)"
+          dot={{
+            stroke: colors?.stroke,
+            strokeWidth: 3,
           }}
         />
         <Area

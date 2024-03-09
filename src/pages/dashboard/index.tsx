@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { CrudFilter, useList } from "@refinedev/core";
 import dayjs from "dayjs";
 import Stats from "../../components/dashboard/Stats";
@@ -7,6 +7,11 @@ import { ResponsiveBarChart } from "../../components/dashboard/ResponsiveBarChar
 import { TabView } from "../../components/dashboard/TabView";
 import { RecentSales } from "../../components/dashboard/RecentSales";
 import { IChartDatum, TTab } from "../../interfaces";
+import NewStats from "../../components/dashboard/NewStats";
+import screenLoader from '../../assets/icons/screenLoader.svg'
+import Chart from "../../components/dashboard/Chart";
+
+
 
 const filters: CrudFilter[] = [
   {
@@ -22,7 +27,9 @@ const filters: CrudFilter[] = [
 ];
 
 export const Dashboard: React.FC = () => {
-  const { data: dailyRevenue } = useList<IChartDatum>({
+  const [activeState, setActiveState] = useState(true); 
+
+  const { data: dailyRevenue, isLoading: revenueLoading } = useList<IChartDatum>({
     resource: "dailyRevenue",
     filters,
   });
@@ -59,7 +66,7 @@ export const Dashboard: React.FC = () => {
       id: 1,
       label: "Daily Revenue",
       content: (
-        <ResponsiveAreaChart
+         <ResponsiveAreaChart
           kpi="Daily revenue"
           data={memoizedRevenueData}
           colors={{
@@ -99,15 +106,30 @@ export const Dashboard: React.FC = () => {
     },
   ];
 
+
   return (
-    <>
-      <Stats
-        dailyRevenue={dailyRevenue}
+    <div className="bg-white p-2 rounded-xl overflow-hidden">
+      {revenueLoading? <img src={screenLoader} alt="loading" className="w-full h-full animate-pulse"/> : <>
+      
+      <NewStats 
+        dailyRevenue={dailyRevenue} 
         dailyOrders={dailyOrders}
         newCustomers={newCustomers}
-      />
-      <TabView tabs={tabs} />
-      <RecentSales />
-    </>
+        onClick={() => setActiveState(!activeState)}
+        active={activeState}
+        />
+
+      {activeState? 
+        <Chart 
+          kpi="Net Return Value"
+          data={memoizedRevenueData}
+          colors={{
+            stroke: "rgb(54, 162, 235)",
+            fill: "rgba(54, 162, 235, 0)",
+          }}
+      /> : null}
+      </>}
+      {/* <TabView tabs={tabs} /> */}
+    </div>
   );
 };
