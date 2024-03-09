@@ -35,10 +35,10 @@ const Chart = ({
     const last = data[data.length - 1].date;
     const range = first +  " - " + last ;
   return (
-    <ResponsiveContainer height={300}>
+    <ResponsiveContainer height={400}>
       <AreaChart
         data={data}
-        height={300}
+        height={400}
         margin={{
           top: 10,
           right: 30,
@@ -102,6 +102,7 @@ const Chart = ({
             stroke: colors?.stroke,
             strokeWidth: 0,
           }}
+          stackId="1"
         />
       </AreaChart>
     </ResponsiveContainer>

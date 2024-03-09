@@ -1,64 +1,52 @@
-body {
-  margin: 0px;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply m-0;
+}
+
 .layout {
-  display: flex;
-  gap: 16px;
+  @apply flex gap-4; 
 }
 
-@media screen and (max-width: 751px) {
-  .layout {
-    display: block;
-  }
-}
-
-.layout .content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.content {
+  @apply flex flex-col flex-grow;
 }
 
 .breadcrumb {
-  display: flex;
-  gap: 24px;
-  list-style-type: "/  ";
-  padding: 8px 16px;
-  border-bottom: 1px solid lightgray;
+  @apply flex gap-6 list-none p-2 border-b border-gray-200; 
 }
 
 .breadcrumb a {
-  color: blue;
-  text-decoration: none;
+  @apply text-blue-600 no-underline; 
 }
 
 .menu {
-  flex-shrink: 0;
-  padding: 8px 16px;
-  border-right: 1px solid lightgray;
+  @apply flex-shrink-0 p-2 border-r border-gray-200;
 }
 
 .menu a {
-  color: black;
+  @apply text-black;
 }
 
 .menu .active {
-  font-weight: bold;
-}
-
-@media screen and (max-width: 751px) {
-  .menu {
-    border-right: none;
-    border-bottom: 1px solid lightgray;
-  }
+  @apply font-bold;
 }
 
 .menu ul {
-  padding-left: 16px;
+  @apply pl-4; 
+}
+
+
+@media screen and (max-width: 751px) {
+  .layout {
+    @apply block;
+  }
+
+  .menu {
+    @apply border-r-0 border-b border-gray-200;
+  }
 }
 
 .page-container {
@@ -73,68 +61,42 @@ body {
   @apply py-4 flex justify-between items-center mb-6;
 }
 
-.bar-chart-container {
-  /* Disable shadows for bars by making the shadow transparent */
-  .recharts-bar-rectangle {
-    filter: drop-shadow(0px 0px 0px transparent);
-  }
-}
-
-
-.hoverDropHead{
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.hoverDropPara{
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 19px;
-  letter-spacing: 0em;
-  text-align: left;
+.bar-chart-container .recharts-bar-rectangle {
   
+  filter: drop-shadow(0px 0px 0px transparent);
 }
 
-.dropDownContent{
+
+.hoverDropHead,
+.hoverDropPara,
+.dropDownContent,
+.cardHead,
+.cardBody,
+.percent {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 12px;
-  letter-spacing: 0em;
   text-align: left;
 }
 
-.cardHead{
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 15px;
-  letter-spacing: 0em;
-  text-align: left;
-
+.hoverDropHead {
+  @apply text-sm font-semibold leading-4; 
 }
 
-.cardBody{
-  font-family: 'Inter', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 22px;
-  letter-spacing: 0em;
-  text-align: left;
-
+.hoverDropPara {
+  @apply text-xs font-normal leading-5;
 }
 
-.percent{
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
-  letter-spacing: 0em;
-  text-align: left;
+.dropDownContent {
+  @apply text-sm font-normal leading-3;
+}
 
+.cardHead {
+  @apply text-base font-semibold leading-4;
+}
+
+.cardBody {
+  @apply text-2xl font-semibold leading-6;
+}
+
+.percent {
+  @apply text-xs font-normal leading-4;
 }
