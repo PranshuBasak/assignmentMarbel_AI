@@ -29,7 +29,7 @@ export interface IAddress {
 export interface IChartDatum {
   date: string;
   value: string;
-  item?: any;
+  percentage?: number;
 }
 
 export interface IChart {

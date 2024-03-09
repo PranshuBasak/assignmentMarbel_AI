@@ -97,22 +97,21 @@ body {
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-
+  
 }
 
 .dropDownContent{
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 12px;
   letter-spacing: 0em;
   text-align: left;
-
 }
 
 .cardHead{
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 15px;
   letter-spacing: 0em;

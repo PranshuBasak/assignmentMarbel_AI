@@ -1,3 +1,4 @@
+
 import {
   ResponsiveContainer,
   AreaChart,
@@ -10,6 +11,9 @@ import {
 } from "recharts";;
 import { IChartDatum } from "../../interfaces";
 import { CustomToolTip } from "./CustomToolTip";
+import CustomLegend from "./CustomLegend";
+import { useState } from "react";
+
 
 type TResponsiveAreaChartProps = {
   kpi: string;
@@ -26,7 +30,10 @@ const Chart = ({
   colors,
 }: TResponsiveAreaChartProps) => {
 
-    // console.log(data)
+  
+    const first = data[0].date
+    const last = data[data.length - 1].date;
+    const range = first +  " - " + last ;
   return (
     <ResponsiveContainer height={300}>
       <AreaChart
@@ -39,25 +46,41 @@ const Chart = ({
           bottom: 0,
         }}
       >
-        <CartesianGrid stroke="#fff" strokeDasharray="0 0 0" />
+        <CartesianGrid 
+          stroke="#f4f4f4" 
+          strokeWidth={2} 
+          vertical={false}
+        />
+
         <XAxis
           dataKey="date"
           tickCount={data?.length ?? 0}
           tick={{
             stroke: "light-grey",
-            strokeWidth: 0.5,
-            fontSize: "12px",
+            strokeWidth: 0,
+            fontSize: "15px",
           }}
+          axisLine={false}
+          tickLine={false}
         />
         <YAxis
-          tickCount={13}
+          dataKey="value"
           tick={{
             stroke: "light-grey",
-            strokeWidth: 0.5,
-            fontSize: "12px",
+            strokeWidth: 0,
+            fontSize: "15px",
           }}
           interval="preserveStartEnd"
           domain={[0, "dataMax + 10"]}
+          axisLine={false}
+          tickLine={false}
+        />
+
+        <Legend 
+          content={<CustomLegend range={range}/>} 
+          verticalAlign="bottom" 
+          align="right" 
+          
         />
 
           <Tooltip
@@ -69,7 +92,6 @@ const Chart = ({
             }}
           />
 
-        <Legend />
         <Area
           type="monotone"
           dataKey="value"

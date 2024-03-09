@@ -53,6 +53,7 @@ export const Dashboard: React.FC = () => {
           day: "numeric",
         }).format(new Date(item.date)),
         value: item?.value,
+        percentage: parseInt((parseInt(item?.value) / 100).toString(), 10),
       }));
     }, [d]);
   };
