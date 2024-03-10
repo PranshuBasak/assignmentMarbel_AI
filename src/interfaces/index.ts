@@ -28,7 +28,8 @@ export interface IAddress {
 
 export interface IChartDatum {
   date: string;
-  value: string;
+  value: number;
+  value1: number;
   percentage?: number;
 }
 

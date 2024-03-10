@@ -1,11 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { CrudFilter, useList } from "@refinedev/core";
 import dayjs from "dayjs";
-import Stats from "../../components/dashboard/Stats";
-import { ResponsiveAreaChart } from "../../components/dashboard/ResponsiveAreaChart";
-import { ResponsiveBarChart } from "../../components/dashboard/ResponsiveBarChart";
-import { TabView } from "../../components/dashboard/TabView";
-import { RecentSales } from "../../components/dashboard/RecentSales";
 import { IChartDatum, TTab } from "../../interfaces";
 import NewStats from "../../components/dashboard/NewStats";
 import screenLoader from '../../assets/icons/screenLoader.svg'
@@ -17,14 +12,15 @@ const filters: CrudFilter[] = [
   {
     field: "start",
     operator: "eq",
-    value: dayjs()?.subtract(7, "days")?.startOf("day"),
+    value: dayjs().startOf('year'),
   },
   {
     field: "end",
     operator: "eq",
-    value: dayjs().startOf("day"),
+    value: dayjs().endOf('year'),
   },
 ];
+
 
 export const Dashboard: React.FC = () => {
   const [activeState, setActiveState] = useState(true); 
@@ -53,7 +49,8 @@ export const Dashboard: React.FC = () => {
           day: "numeric",
         }).format(new Date(item.date)),
         value: item?.value,
-        percentage: parseInt((parseInt(item?.value) / 100).toString(), 10),
+        value1: Math.round(item?.value * Math.random()),
+        percentage: parseInt((item?.value / 100).toString(), 10),
       }));
     }, [d]);
   };

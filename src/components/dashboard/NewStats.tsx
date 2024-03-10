@@ -48,7 +48,7 @@ const NewStats = ({ dailyRevenue, dailyOrders, newCustomers, onClick, active } :
             <DataCard 
                 title="Conversion rate" 
                 data={newCustomers}
-                format='36'
+                format=''
                 active={activeIndex === 3} 
                 onClick={() => handleClick(3)} />
             <div className="card w-96 bg-base-100">

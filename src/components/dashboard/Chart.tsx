@@ -12,10 +12,11 @@ import {
 import { IChartDatum } from "../../interfaces";
 import { CustomToolTip } from "./CustomToolTip";
 import CustomLegend from "./CustomLegend";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { addDays } from "date-fns";
 
 
-type TResponsiveAreaChartProps = {
+type TChartProps = {
   kpi: string;
   data: IChartDatum[];
   colors: {
@@ -28,16 +29,41 @@ const Chart = ({
   kpi,
   data,
   colors,
-}: TResponsiveAreaChartProps) => {
+}: TChartProps) => {
 
-  
+  const [range, setRange] = useState({ 
+    startDate: new Date(new Date().getFullYear(), 2, 2), 
+    endDate: addDays(new Date(new Date().getFullYear(), 2, 2), 7) 
+  });
+
+  const [filteredData, setFilteredData] = useState<IChartDatum[]>([]);
+
+  useEffect(() => {
+    
+    const initialFilteredData = data.filter(d => 
+      new Date(d.date) >= range.startDate && new Date(d.date) <= range.endDate
+    );
+    setFilteredData(initialFilteredData);
+  }, []); 
+
+
+
+
+  const handleRangeChange = (selectedRange: any) => {
+    setRange(selectedRange);
+    const newFilteredData = data.filter(d => 
+      new Date(d.date) >= selectedRange.startDate && new Date(d.date) <= selectedRange.endDate
+    );
+    setFilteredData(newFilteredData);
+  };
     const first = data[0].date
     const last = data[data.length - 1].date;
-    const range = first +  " - " + last ;
+    const ranged = first +  " - " + last ;
+
   return (
     <ResponsiveContainer height={400}>
       <AreaChart
-        data={data}
+        data={filteredData}
         height={400}
         margin={{
           top: 10,
@@ -46,8 +72,13 @@ const Chart = ({
           bottom: 0,
         }}
       >
+        <Legend 
+          content={<CustomLegend ranged={ranged} onRangeChange={handleRangeChange}/>} 
+          verticalAlign="bottom" 
+          align="right"
+        />
         <CartesianGrid 
-          stroke="#f4f4f4" 
+          stroke="#f2f2f2" 
           strokeWidth={2} 
           vertical={false}
         />
@@ -76,12 +107,7 @@ const Chart = ({
           tickLine={false}
         />
 
-        <Legend 
-          content={<CustomLegend range={range}/>} 
-          verticalAlign="bottom" 
-          align="right" 
-          
-        />
+
 
           <Tooltip
             content={<CustomToolTip  />}
@@ -97,13 +123,28 @@ const Chart = ({
           dataKey="value"
           stroke={colors?.stroke}
           strokeWidth={3}
-          fill={colors?.fill}
+          fill="rgba(54, 162, 235, 0)"
           dot={{
             stroke: colors?.stroke,
             strokeWidth: 0,
           }}
           stackId="1"
         />
+        <Area
+          type="monotone"
+          dataKey="value1"
+          stroke="rgba(135, 206, 250)" 
+          strokeDasharray="5 5" 
+          strokeWidth={3}
+          fill="rgba(54, 162, 235, 0)"
+          dot={{
+            stroke: "rgba(135, 206, 250)", 
+            strokeWidth: 0,
+          }}
+          stackId="2"
+        />
+
+        
       </AreaChart>
     </ResponsiveContainer>
   );
