@@ -17,9 +17,9 @@ export const CustomToolTip = ({
     // console.log(dataPoint)
 
     return (
-      <div className="">
+      <div className=" bg-white shadow-xl rounded-xl">
         <div
-          className="px-4 py-4   flex justify-center items-center gap-3  bg-white shadow-xl rounded-xl"
+          className="px-4 py-4   flex justify-center items-center gap-3  bg-white  rounded-xl"
           style={tooltipStyle}
         >
           <p className=" bg-gradient-to-r from-blue-400 to-blue-300 w-6 h-1 rounded"></p>
@@ -33,10 +33,10 @@ export const CustomToolTip = ({
 
         </div>
         <div
-          className="px-4 py-4   flex justify-center items-center gap-3  bg-white shadow-xl rounded-xl"
+          className="px-4 py-4   flex justify-center items-center gap-3  bg-white  rounded-xl"
           style={tooltipStyle}
         >
-          <p className=" bg-gradient-to-r from-blue-300 to-blue-100 w-6 h-1 rounded"></p>
+          <p className=" bg-gradient-to-r from-blue-400 to-blue-300 w-6 h-1 rounded"></p>
           <p className="dropDownContent">{label}</p>
           <p className="cardHead">{dataPoint.value1}</p>
           

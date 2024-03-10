@@ -23,8 +23,8 @@ import HoverCard from './HoverCard';
 
 
     return (
-        <div className={`${active? 'bg-gray-200' : 'bg-white'} card w-full bg-white hover:bg-gray-100 group transition-all duration-500  lg:h-20 `} onClick={onClick}>
-            <div className="card-body px-3 py-2 flex-row">
+        <div className={`${active? 'bg-gray-100' : 'bg-white'} card w-full bg-white hover:bg-gray-100 group transition-all duration-500  lg:h-20`} onClick={onClick}>
+            <div className="card-body px-3 py-2 flex-row ">
                 <div className="card-actions flex-col justify-between cursor-default">
                     <div className="dropdown dropdown-hover ">
                         <div tabIndex={0} role="button" className="cardHead cursor-default">{title}</div>
@@ -38,8 +38,8 @@ import HoverCard from './HoverCard';
                         <div className="grow"></div>
                     </div>
                 </div>
-                    <div className="grow"></div>
-                    <DropDown active={active}/>
+                <div className="grow"></div>
+                <DropDown active={active}/>
             </div>
         </div>
     )

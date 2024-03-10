@@ -41,7 +41,7 @@ body {
 
 @media screen and (max-width: 751px) {
   .layout {
-    @apply block;
+    @apply flex;
   }
 
   .menu {

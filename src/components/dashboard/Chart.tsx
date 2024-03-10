@@ -56,15 +56,14 @@ const Chart = ({
     );
     setFilteredData(newFilteredData);
   };
-    const first = data[0].date
-    const last = data[data.length - 1].date;
-    const ranged = first +  " - " + last ;
+
 
   return (
     <ResponsiveContainer height={400}>
       <AreaChart
         data={filteredData}
         height={400}
+        width={300}
         margin={{
           top: 10,
           right: 30,
@@ -73,7 +72,7 @@ const Chart = ({
         }}
       >
         <Legend 
-          content={<CustomLegend ranged={ranged} onRangeChange={handleRangeChange}/>} 
+          content={<CustomLegend onRangeChange={handleRangeChange}/>} 
           verticalAlign="bottom" 
           align="right"
         />

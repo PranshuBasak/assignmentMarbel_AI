@@ -25,7 +25,7 @@ const NewStats = ({ dailyRevenue, dailyOrders, newCustomers, onClick, active } :
     }
 
     return (
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="flex flex-col gap-2 lg:flex-row justify-center items-center">
             <DataCard 
                 title="Online store sessions" 
                 data={newCustomers}

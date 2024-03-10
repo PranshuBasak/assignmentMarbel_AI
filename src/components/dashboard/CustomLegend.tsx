@@ -13,7 +13,7 @@ interface CustomRange {
   key: string;
 }
 
-const CustomLegend = ({ ranged, onRangeChange }: any) => {
+const CustomLegend = ({ onRangeChange }: any) => {
   const [range, setRange] = useState<CustomRange[]>([
     {
       startDate: new Date(new Date().getFullYear(), 2, 2), 
@@ -29,7 +29,7 @@ const CustomLegend = ({ ranged, onRangeChange }: any) => {
           <div
             tabIndex={0}
             role="button"
-            className="btn dropDownContent px-4 gap-4"
+            className="btn dropDownContent gap-4"
           >
             <p className="bg-gradient-to-r from-blue-400 to-blue-300 w-6 h-1 rounded"></p>
             <p className="dropDownContent">{`${format(
@@ -68,12 +68,12 @@ const CustomLegend = ({ ranged, onRangeChange }: any) => {
           </ul>
         </div>
       </div>
-      <div className="flex justify-end items-center gap-2 py-2 cursor-pointer ">
+      <div className="flex justify-end items-center gap-2 p-2 cursor-pointer ">
         <div className="dropdown dropdown-top dropdown-end">
           <div
             tabIndex={0}
             role="button"
-            className="btn dropDownContent px-4 gap-4"
+            className="btn dropDownContent gap-4 justify-center items-center"
           >
             <p className="bg-gradient-to-r from-blue-300 to-blue-100 w-6 h-1 rounded"></p>
             <p className="dropDownContent">

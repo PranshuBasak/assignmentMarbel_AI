@@ -56,15 +56,14 @@ export const Dashboard: React.FC = () => {
   };
 
   const memoizedRevenueData = useMemoizedChartData(dailyRevenue);
-  // const memoizedOrdersData = useMemoizedChartData(dailyOrders);
-  // const memoizedNewCustomersData = useMemoizedChartData(newCustomers);
+
 
 
 
 
   return (
-    <div className="bg-white p-2 rounded-xl overflow-hidden">
-      {revenueLoading? <img src={screenLoader} alt="loading" className="w-full h-full animate-pulse"/> : <>
+    <div className="bg-white rounded-xl p-4">
+      {revenueLoading? <img src={screenLoader} alt="loading" className="w-full h-full animate-pulse shadow-none"/> : <>
       
       <NewStats 
         dailyRevenue={dailyRevenue} 
