@@ -70,6 +70,9 @@ The application has been deployed and can be accessed using the following link:
 
 [Marble AI Dashboard](https://marbleai.pranshubasak.co/)
 
+<img width="959" alt="image" src="https://github.com/PranshuBasak/Images_repo/assets/75575986/2c51cddb-6326-43be-8b71-1542516b8d52">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RniWzBDNomc?si=RNYM_ddApczc6vEf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Components Overview
 
 This section explains the components used in the project and their functionalities.
